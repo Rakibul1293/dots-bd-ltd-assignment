@@ -16,7 +16,7 @@ const AddSong = () => {
         data.imageUrl = imageUrl;
         data.token = localStorage.getItem("token");
 
-        axios.post('http://localhost:5000/api/userInfo', data, {
+        axios.post('https://song-listing-api.herokuapp.com/api/userInfo', data, {
             headers: {
                 'Content-Type': 'application/json'
             }

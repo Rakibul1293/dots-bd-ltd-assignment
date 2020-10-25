@@ -20,7 +20,7 @@ const EditSong = () => {
         const path_id = currentLocation.split('/').slice(2).join('/');
         data.id = path_id;
 
-        axios.patch(`http://localhost:5000/api/userInfo/${path_id}`, data, {
+        axios.patch(`https://song-listing-api.herokuapp.com/api/userInfo/${path_id}`, data, {
             headers: {
                 'Content-Type': 'application/json'
             }
