@@ -1,10 +1,14 @@
 import React from 'react';
 import { useHistory } from 'react-router';
+import { useLocation } from 'react-router-dom'
 import { Link } from "react-router-dom";
 import logo from '../../../assets/images/logo.jpg';
 import './Nav.css';
 
 const Nav = () => {
+    const location = useLocation();
+    const current_path = location.pathname;
+
     const history = useHistory();
 
     const handleSignout = () => {
@@ -12,29 +16,17 @@ const Nav = () => {
     }
 
     const handleMyListRoute = () => {
-        console.log(localStorage.getItem("token"));
         if (!localStorage.getItem("token") || localStorage.getItem("token") === "undefined" || localStorage.getItem("token") === "null") {
             history.push('/auth');
         } else {
-            const currentLocation = window.location.pathname;
-            console.log(currentLocation);
-            const path_id = currentLocation.split('/').slice(1).join('/');
-            console.log("Path Id: ", path_id);
-
             history.push('/my-list');
         }
     }
 
     const handleAddSongRoute = () => {
-        console.log(localStorage.getItem("token"));
         if (!localStorage.getItem("token") || localStorage.getItem("token") === "undefined" || localStorage.getItem("token") === "null") {
             history.push('/auth');
         } else {
-            const currentLocation = window.location.pathname;
-            console.log(currentLocation);
-            const path_id = currentLocation.split('/').slice(1).join('/');
-            console.log("Path Id: ", path_id);
-
             history.push('/add-song');
         }
     }
@@ -51,8 +43,6 @@ const Nav = () => {
                             {
                                 localStorage.getItem("token") ? <li><Link to="/" onClick={handleSignout}>Log Out</Link></li> : <li><Link to="/auth">Log In</Link></li>
                             }
-                            {/* {<li><Link to="/auth" onClick={handleSignout}>Log In</Link></li>
-                            <li><Link to="/auth" onClick={handleSignout}>Log Out</Link></li>} */}
                         </ul>
                         <form className="navbar-form navbar-right">
                             <div className="form-group">
@@ -73,7 +63,11 @@ const Nav = () => {
                             <a className="navbar-brand" href="#">
                                 <img src={logo} alt="" />
                                 <div className="line-bar-right"></div>
-                                <p className="nav-text">Home</p>
+                                <p className="nav-text">
+                                    {
+                                        (current_path === '/') ? 'Home' : 'My List'
+                                    }
+                                </p>
                                 <div className="line-bar-left"></div>
                                 <div className="clearfix"></div>
                             </a>
