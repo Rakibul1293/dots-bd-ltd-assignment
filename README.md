@@ -2,7 +2,7 @@
 ![](/dots-bd-ltd-assignment.png?raw=true)
 
 # Website
-# [LIVE Website Link](https://https://song-listing.firebaseapp.com)
+# [LIVE Website Link](https://song-listing.firebaseapp.com)
 # API
 # [LIVE API Link](https://song-listing-api.herokuapp.com)
 
