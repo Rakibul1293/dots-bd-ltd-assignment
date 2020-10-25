@@ -25,16 +25,12 @@ const MyList = () => {
     useEffect(() => {
         axios.get('http://localhost:5000/api/')
             .then(res => {
-                console.log(res);
                 setAllData(res.data);
             })
             .catch(err => {
-                console.log(err);
                 setMessage(err);
             })
     }, [allData]);
-    console.log(allData);
-    console.log(allData.length);
 
     const getAllData = (data) => {
         setAllData(data);

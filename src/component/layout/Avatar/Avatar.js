@@ -52,8 +52,6 @@ const Avatar = (props) => {
 
     props.handleImageUrl(imageUrl);
 
-    // console.log(imageUrl);
-
     const DeleteButton = (
         <input type="" name="login-submit" id="login-submit" tabindex="4" className="form-control btn btn-login deleteBtn" style={{ marginTop: "5px" }} onClick={() => onDelete(false)} value="Delete" />
     )

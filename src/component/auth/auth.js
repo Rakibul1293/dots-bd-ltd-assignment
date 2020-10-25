@@ -45,7 +45,6 @@ const Auth = () => {
     const history = useHistory();
 
     const signUpSubmits = (data) => {
-        console.log(data);
 
         axios.post('http://localhost:5000/auth/signup', data, {
             headers: {
@@ -53,11 +52,9 @@ const Auth = () => {
             }
         })
             .then((data) => {
-                console.log(data);
                 history.push('/');
             })
             .catch(err => {
-                console.log(err);
                 setMessage('Registration Failed !!! Please try again');
             })
     }
@@ -65,15 +62,12 @@ const Auth = () => {
     const signInSubmits = (e) => {
         e.preventDefault();
         const email = document.getElementById("emailAddress").value;
-        console.log("email: ", email);
         let password = document.getElementById("pass").value;
-        console.log("pass: ", password);
 
         const data = {
             email,
             password
         }
-        console.log(data);
 
         axios.post('http://localhost:5000/auth/signin', data, {
             headers: {
@@ -82,25 +76,18 @@ const Auth = () => {
             }
         })
             .then((data) => {
-                console.log(Object.keys(data));
-                console.log(data);
-                console.log(data.data);
                 localStorage.setItem("token", data.data.token);
                 if (data.data.message === "Auth failed") return setMessage("User doesn't exist");
                 history.push('/');
             })
             .catch(err => {
-                console.log(err);
                 setMessage("User doesn't exist");
             })
     }
-    console.log(message);
 
     const conPassHandle = () => {
         const password = document.getElementById("password").value;
-        console.log(password);
         let conPassword = document.getElementById("conPassword").value;
-        console.log(conPassword);
         if (!conPassword) {
             conPassword = "undefined";
         }

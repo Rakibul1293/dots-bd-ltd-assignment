@@ -13,7 +13,6 @@ const AddSong = () => {
     const history = useHistory();
 
     const onSubmit = (data) => {
-        console.log(data);
         data.imageUrl = imageUrl;
         data.token = localStorage.getItem("token");
 
@@ -23,11 +22,9 @@ const AddSong = () => {
             }
         })
             .then((data) => {
-                console.log(data);
                 history.push('/my-list');
             })
             .catch(err => {
-                console.log(err);
                 setMessage('Opps !!! Song not added. Please try again');
             })
     }

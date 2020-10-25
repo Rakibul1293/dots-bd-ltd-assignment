@@ -11,7 +11,6 @@ const SongList = (props) => {
     const [message, setMessage] = useState();
 
     const history = useHistory();
-    console.log(props);
 
     const handleClickEdit = () => {
         history.push(`/edit-song/${props.data._id}`);
@@ -21,21 +20,17 @@ const SongList = (props) => {
         alert("Are you sure ? You want to Delete ?");
         axios.delete(`http://localhost:5000/api/userInfoDelete/${props.data._id}`)
             .then(res => {
-                console.log(res);
             })
             .catch(err => {
-                console.log(err);
                 alert('Opps !!! Not Deleted. Please try again');
             })
 
         axios.get('http://localhost:5000/api/')
             .then(res => {
-                console.log(res);
                 setAllData(res.data);
                 props.getAllData(allData);
             })
             .catch(err => {
-                console.log(err);
                 setMessage(err);
             })
 

@@ -13,14 +13,11 @@ const EditSong = () => {
     const history = useHistory();
 
     const onSubmit = (data) => {
-        console.log(data);
         data.imageUrl = imageUrl;
         data.token = localStorage.getItem("token");
 
         const currentLocation = window.location.pathname;
-        console.log(currentLocation);
         const path_id = currentLocation.split('/').slice(2).join('/');
-        console.log("Path Id: ", path_id);
         data.id = path_id;
 
         axios.patch(`http://localhost:5000/api/userInfo/${path_id}`, data, {
@@ -29,11 +26,9 @@ const EditSong = () => {
             }
         })
             .then(data => {
-                console.log(data);
                 history.push('/my-list');
             })
             .catch(err => {
-                console.log(err);
                 setMessage('Opps !!! Song not Updated. Please try again');
             })
     }
